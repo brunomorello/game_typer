@@ -6,6 +6,7 @@ $(function() {
 
 	updatePhraseLength();
 	initializeCounters();
+	inputedValueValidator();
 	runTimer();
 	$("#restart-game").click(restartGame);
 });
@@ -40,6 +41,8 @@ function runTimer() {
 
 	typeArea.one('focus', function() {
 
+		$('#restart-game').attr("disabled", true);
+
 		var idInterval = setInterval(function() {
 			
 			remainingTimer--;
@@ -48,6 +51,8 @@ function runTimer() {
 			if (remainingTimer < 1) {
 				typeArea.attr('disabled', true);
 				clearInterval(idInterval);
+				$('#restart-game').attr("disabled", false);
+				typeArea.toggleClass("type-area-inactivated");
 			}
 
 		}, 1000);
@@ -60,9 +65,40 @@ function restartGame() {
 	
 	typeArea.attr('disabled', false);
 	typeArea.val("");
+	
 	$('#count-words').text("0");
 	$('#count-chars').text("0");
 	$('#game-timer').text(initialTimer);
 	runTimer();
+	
+	typeArea.toggleClass("type-area-inactivated");
+	typeArea.removeClass("type-area-incorrect");
+	typeArea.removeClass("type-area-correct");
+
+}
+
+function inputedValueValidator() {
+
+	var phrase = $('.phrase').text();
+
+	typeArea.on("input", function() {
+		
+		var valueInputed = typeArea.val();
+		var compareStrings = phrase.substr(0, valueInputed.length);
+
+		//console.log(valueInputed);
+		//console.log(compareStrings);
+		if (valueInputed == compareStrings) {
+			console.log("its correct");
+			typeArea.addClass("type-area-correct");
+			typeArea.removeClass("type-area-incorrect");
+
+		} else {
+			console.log("its incorrect");
+			typeArea.addClass("type-area-incorrect");
+			typeArea.removeClass("type-area-correct");
+		}
+
+	});
 
 }
