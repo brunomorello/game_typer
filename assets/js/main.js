@@ -53,6 +53,9 @@ function runTimer() {
 				clearInterval(idInterval);
 				$('#restart-game').attr("disabled", false);
 				typeArea.toggleClass("type-area-inactivated");
+
+				addNewScore();
+
 			}
 
 		}, 1000);
@@ -84,21 +87,32 @@ function inputedValueValidator() {
 	typeArea.on("input", function() {
 		
 		var valueInputed = typeArea.val();
-		var compareStrings = phrase.substr(0, valueInputed.length);
 
-		//console.log(valueInputed);
-		//console.log(compareStrings);
-		if (valueInputed == compareStrings) {
-			console.log("its correct");
+		if ( phrase.startsWith(valueInputed) ) {
+			//console.log("its correct");
 			typeArea.addClass("type-area-correct");
 			typeArea.removeClass("type-area-incorrect");
 
 		} else {
-			console.log("its incorrect");
+			//console.log("its incorrect");
 			typeArea.addClass("type-area-incorrect");
 			typeArea.removeClass("type-area-correct");
 		}
 
 	});
 
+}
+
+function addNewScore() {
+
+	var tableBody = $(".score").find("tbody");
+	var user = "Bruno";
+	var countWords = $("#count-words").text();
+
+	var line = "<tr>" +
+					"<td>" + user + "</td>" +
+					"<td>" + countWords + "</td>" +
+				"</tr>";
+
+	tableBody.append(line);
 }
