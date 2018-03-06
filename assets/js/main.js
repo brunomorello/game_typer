@@ -102,17 +102,3 @@ function inputedValueValidator() {
 	});
 
 }
-
-function addNewScore() {
-
-	var tableBody = $(".score").find("tbody");
-	var user = "Bruno";
-	var countWords = $("#count-words").text();
-
-	var line = "<tr>" +
-					"<td>" + user + "</td>" +
-					"<td>" + countWords + "</td>" +
-				"</tr>";
-
-	tableBody.append(line);
-}
