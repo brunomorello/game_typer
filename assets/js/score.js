@@ -6,13 +6,16 @@ function addNewScore() {
 	var user = "Bruno";
 	var countWords = $("#count-words").text();
 
-	var line = newDeleteLine(user, countWords);
+	var line = newDeletableLine(user, countWords);
 	line.find(".web-button-remove").click(deleteScore);
 
-	tableBody.append(line);
+	tableBody.prepend(line);
+	
+	$(".score").slideDown(500);
+	scrollScore();
 }
 
-function newDeleteLine(user, numberWords) {
+function newDeletableLine(user, numberWords) {
 
 	var deletableLine = $("<tr>");
 
@@ -37,8 +40,15 @@ function newDeleteLine(user, numberWords) {
 }
 
 function deleteScore() {
+	
 	event.preventDefault();
-	$(this).parent().parent().remove();
+
+	var score = $(this).parent().parent();
+	score.fadeOut(1000);
+	setTimeout(function() {
+		score.remove();
+	},1000);
+
 }
 
 function toggleScore() {
@@ -47,6 +57,20 @@ function toggleScore() {
 	//$(".score").toggle();
 
 	//slideToggle show/hide DOM softly
-	$(".score").slideToggle(1000);
+	//stop() stops any animation executing and executes only the last animation
+	$(".score").stop().slideToggle(1000);
 
+}
+
+function scrollScore() {
+
+	var scorePosition = $(".score").offset().top + "px";
+	console.log(scorePosition);
+
+
+	$("html,body").animate(
+		{ scrollTop : scorePosition },
+		1000
+	);
+	
 }
