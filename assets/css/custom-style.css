@@ -24,3 +24,12 @@
 .type-area-incorrect {
 	border: 3px solid red;
 }
+
+.score {
+	padding-top: 5px;
+	display: none;
+}
+
+body {
+	overflow: scroll;
+}

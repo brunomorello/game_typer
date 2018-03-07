@@ -1,3 +1,5 @@
+$("#toggle-score").click(toggleScore);
+
 function addNewScore() {
 
 	var tableBody = $(".score").find("tbody");
@@ -37,4 +39,14 @@ function newDeleteLine(user, numberWords) {
 function deleteScore() {
 	event.preventDefault();
 	$(this).parent().parent().remove();
+}
+
+function toggleScore() {
+	
+	//toggle show/hide DOM object
+	//$(".score").toggle();
+
+	//slideToggle show/hide DOM softly
+	$(".score").slideToggle(1000);
+
 }
