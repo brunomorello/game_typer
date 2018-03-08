@@ -1,0 +1,35 @@
+.type-area {
+	font-size: 20px;
+	height: 130px;
+	border: 3px solid black;
+}
+
+.phrase {
+	font-size: 20px;
+	text-align: left;
+}
+
+.type-area-inactivated {
+	background-color: lightgray;
+}
+
+.web-icons {
+	vertical-align: middle;
+}
+
+.type-area-correct {
+	border: 3px solid green;
+}
+
+.type-area-incorrect {
+	border: 3px solid red;
+}
+
+.score {
+	padding-top: 5px;
+	display: none;
+}
+
+body {
+	overflow: scroll;
+}
