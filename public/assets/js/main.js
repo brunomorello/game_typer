@@ -37,10 +37,11 @@ function initializeCounters() {
 
 function runTimer() {
 	
-	var remainingTimer = $('#game-timer').text();
 
 	typeArea.one('focus', function() {
 
+		var remainingTimer = $('#game-timer').text();
+		
 		$('#restart-game').attr("disabled", true);
 
 		var idInterval = setInterval(function() {
@@ -82,10 +83,10 @@ function restartGame() {
 
 function inputedValueValidator() {
 
-	var phrase = $('.phrase').text();
 
 	typeArea.on("input", function() {
 		
+		var phrase = $('.phrase').text();
 		var valueInputed = typeArea.val();
 
 		if ( phrase.startsWith(valueInputed) ) {
@@ -100,5 +101,11 @@ function inputedValueValidator() {
 		}
 
 	});
+}
 
+function updateInitialTime(timer) {
+
+	//update global var initialTimer
+	initialTimer = timer;
+	$("#game-timer").text(timer);
 }
