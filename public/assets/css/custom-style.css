@@ -33,3 +33,9 @@
 body {
 	overflow: scroll;
 }
+
+
+#error {
+	color: red;
+	display: none;
+}

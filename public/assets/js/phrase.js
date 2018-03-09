@@ -4,6 +4,15 @@ function newRandomPhrase() {
 	
 	//request array of phrases on localhost
 	$.get("http://localhost:3000/frases", generateRandomPhrase)
+	.fail(function () {
+		// when it fails, shows error msg
+		$("#error").toggle();
+
+		setTimeout(function() {
+			//hide error msg after 2 seconds
+			$("#error").toggle();
+		}, 2000);
+	});
 
 }
 
