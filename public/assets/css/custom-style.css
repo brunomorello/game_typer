@@ -45,3 +45,8 @@ body {
 	width: 70px;
 	display: none;
 }
+
+#phrase-id {
+	width: 40px;
+	margin-left: 10px;
+}
