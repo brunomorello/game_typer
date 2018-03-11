@@ -1,4 +1,5 @@
 $("#toggle-score").click(toggleScore);
+$("#sync-score").click(syncScore);
 
 function addNewScore() {
 
@@ -6,7 +7,7 @@ function addNewScore() {
 	var user = "Bruno";
 	var countWords = $("#count-words").text();
 
-	var line = newDeletableLine(user, countWords);
+	var line = newScoreLine(user, countWords);
 	line.find(".web-button-remove").click(deleteScore);
 
 	tableBody.prepend(line);
@@ -15,7 +16,7 @@ function addNewScore() {
 	scrollScore();
 }
 
-function newDeletableLine(user, numberWords) {
+function newScoreLine(user, numberWords) {
 
 	var deletableLine = $("<tr>");
 
@@ -71,4 +72,49 @@ function scrollScore() {
 		1000
 	);
 	
+}
+
+function syncScore() {
+
+	var score = [];
+	var lines = $("tbody>tr");
+
+	lines.each(function() {
+
+		var user = $(this).find('td:nth-child(1)').text();
+		var numWors = $(this).find('td:nth-child(2)').text();
+
+		console.log('user: ' + user);
+		console.log('number os words: ' + numWors);
+
+		var scoreAux = {
+			usuario : user,
+			pontos : numWors
+		};
+
+		score.push(scoreAux);
+
+	});
+
+	var dataAux = {
+		placar : score
+	};
+
+	$.post('http://localhost:3000/placar', dataAux, function() {
+		console.log('score synchronized');
+	});
+}
+
+function updateScore() {
+
+	$.get('http://localhost:3000/placar', function(data) {
+		$(data).each(function() {
+			var line = newScoreLine(this.usuario, this.pontos);
+
+			line.find(".web-button-remove").click(deleteScore);
+
+			$("tbody").append(line);
+		});
+	});
+
 }

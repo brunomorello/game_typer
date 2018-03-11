@@ -9,6 +9,7 @@ $(function() {
 	inputedValueValidator();
 	runTimer();
 	$("#restart-game").click(restartGame);
+	updateScore();
 });
 
 function updatePhraseLength() {
@@ -37,7 +38,6 @@ function initializeCounters() {
 
 function runTimer() {
 	
-
 	typeArea.one('focus', function() {
 
 		var remainingTimer = $('#game-timer').text();
