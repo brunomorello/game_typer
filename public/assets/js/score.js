@@ -84,9 +84,6 @@ function syncScore() {
 		var user = $(this).find('td:nth-child(1)').text();
 		var numWors = $(this).find('td:nth-child(2)').text();
 
-		console.log('user: ' + user);
-		console.log('number os words: ' + numWors);
-
 		var scoreAux = {
 			usuario : user,
 			pontos : numWors
