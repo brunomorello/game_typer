@@ -10,6 +10,9 @@
 	<!-- Import materialize.css -->
 	<link rel="stylesheet" type="text/css" href="assets/css/libs/materialize.min.css">
 
+    <!-- Import Selectize - https://selectize.github.io/selectize.js/ -->
+    <link rel="stylesheet" type="text/css" href="assets/css/libs/selectize.default.css"/>
+
 	<!-- Import Website custom css -->
 	<link rel="stylesheet" type="text/css" href="assets/css/custom-style.css">
 </head>
@@ -68,6 +71,13 @@
 
 			<input type="number" id="phrase-id" min="0">
 
+			<div class="select-users">
+				<select id="users">
+					<option value="Bruno">Bruno</option>
+					<option value="Rebeca">Rebeca</option>
+				</select>
+			</div>
+
 			<a class="btn-floating btn-large waves-effect waves-light yellow" id="sync-score">
 				<i class="material-icons">sync</i>
 			</a>			
@@ -104,6 +114,7 @@
 	<script type="text/javascript" src="assets/js/score.js"></script>
 	<script type="text/javascript" src="assets/js/phrase.js"></script>
 	<script type="text/javascript" src="assets/js/libs/materialize.min.js"></script>
+	<script type="text/javascript" src="assets/js/libs/selectize.js"></script>
 
 </body>
 </html>

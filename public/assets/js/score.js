@@ -4,7 +4,7 @@ $("#sync-score").click(syncScore);
 function addNewScore() {
 
 	var tableBody = $(".score").find("tbody");
-	var user = "Bruno";
+	var user = $("#users").val();
 	var countWords = $("#count-words").text();
 
 	var line = newScoreLine(user, countWords);

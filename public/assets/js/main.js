@@ -10,6 +10,13 @@ $(function() {
 	runTimer();
 	$("#restart-game").click(restartGame);
 	updateScore();
+
+	//Framework selectize
+	$('#users').selectize({
+		create: true,
+		sortField: 'text'
+	});
+	
 });
 
 function updatePhraseLength() {
