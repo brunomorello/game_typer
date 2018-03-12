@@ -99,6 +99,16 @@ function syncScore() {
 
 	$.post('http://localhost:3000/placar', dataAux, function() {
 		console.log('score synchronized');
+		$(".tooltip").tooltipster("open");
+	})
+	.fail(function () {
+		$(".tooltip").tooltipster("open").tooltipster("content", "Failed to Sync");
+	})
+	.always(function () {
+		
+		setTimeout(function () {
+			$(".tooltip").tooltipster("close");	
+		}, 1200);
 	});
 }
 

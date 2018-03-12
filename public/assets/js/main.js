@@ -16,6 +16,11 @@ $(function() {
 		create: true,
 		sortField: 'text'
 	});
+
+	//Framework Tooltipster
+	$(".tooltip").tooltipster({
+		trigger: "custom"
+	});
 	
 });
 
